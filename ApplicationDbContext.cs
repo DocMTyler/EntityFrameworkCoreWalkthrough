@@ -14,7 +14,7 @@ namespace EntityFramework
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Building> Building { get; set; }
+        public DbSet<Buildings> Buildings { get; set; }
         public DbSet<Room> Room { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
