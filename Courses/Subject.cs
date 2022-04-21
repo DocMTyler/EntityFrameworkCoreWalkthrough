@@ -11,6 +11,6 @@ namespace EntityFramework
         public int SubjectID { get; set; }
         public string SubjectName { get; set; }
 
-        List<Course> Courses { get; set; }
+        public List<Course> Courses { get; set; }
     }
 }

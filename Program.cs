@@ -62,7 +62,7 @@ namespace EntityFramework
                         .Where(r => r.RoomNumber >= 200)
                         .OrderBy(r => r.RoomNumber))
                     .ToList();
-
+                
                 foreach (var b in buildings)
                 {
                     Console.WriteLine($"{b.BuildingName}");
@@ -72,6 +72,36 @@ namespace EntityFramework
                         Console.WriteLine($"{room.RoomNumber} {room.Description ?? "N/A"}");
                     }
                 }*/
+
+                /*var subjects = db.Subject
+                    .Include(s => s.Courses)
+                    .ToList();
+
+                foreach(var subject in subjects)
+                {
+                    Console.WriteLine($"{subject.SubjectName}");
+                    Console.WriteLine("--------------------------");
+                    foreach(var course in subject.Courses)
+                    {
+                        Console.WriteLine($"Course ID:{course.CourseID} | Course Name:{course.CourseName} | Credit Hours: {course.CreditHours}");
+                    }
+                    Console.WriteLine("--------------------------");
+                }*/
+
+                var sections = db.Section
+                    .Include(sec => sec.Course)
+                    .Include(sec => sec.Teacher)
+                    .Include(sec => sec.Semester)
+                    .Include(sec => sec.Period)
+                        /*.OrderBy(s => s.Semester.StartDate)*/
+                    .ToList();
+                Console.WriteLine("Teacher                Course                     ID   Start Date   End Date     Time");
+                Console.WriteLine("-------------------------------------------------------------------------------------------");
+                foreach (var section in sections)
+                {
+                    Console.WriteLine($"{section.Teacher.LastName, -20} | {section.Course.CourseName, -25} | {section.Semester.SemesterID} | {section.Semester.StartDate:yyyy-MM-dd} - {section.Semester.EndDate:yyyy-MM-dd} | {section.Period.StartTime} - {section.Period.EndTime}");
+                }
+
 
                 /*var rooms = db.Room
                     .Include(r => r.Building)
@@ -114,7 +144,7 @@ namespace EntityFramework
                 db.SaveChanges();*/
 
                 //Update Exercise
-                /*var teacher = db.Teacher.Find(11);
+                /*var teacher = db.Teacher.Find(12);
                 teacher.FirstName = "Matthew";
                 db.Teacher.Update(teacher);
                 db.SaveChanges();
@@ -132,7 +162,7 @@ namespace EntityFramework
                 db.SaveChanges();*/
 
                 //Delete exercise
-                /*var teacher = db.Teacher.Single(t => t.TeacherID == 11);
+                /*var teacher = db.Teacher.Single(t => t.TeacherID == 12);
                 db.Teacher.Remove(teacher);
                 db.SaveChanges();*/
 
