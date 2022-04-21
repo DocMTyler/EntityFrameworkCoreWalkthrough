@@ -131,7 +131,9 @@ namespace EntityFramework
                     Console.WriteLine($"{g.Building} - {g.Count}");
                 }*/
             }
-            InsertStoredProcedureExample();
+            Console.WriteLine("Enter the building name that you want to put in the database");
+            string input = Console.ReadLine();
+            InsertStoredProcedureExample(input);
             GetAllStoredProcedureExample();
             //FromEFStoredProcedureExample();
             Console.WriteLine("Press any key to continue...");
@@ -181,14 +183,14 @@ namespace EntityFramework
             }
         }
 
-        public static void InsertStoredProcedureExample()
+        public static void InsertStoredProcedureExample(string input)
         {
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
                 var cmd = new SqlCommand("BuildingInsert", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@BuildingName", "Output Test");
+                cmd.Parameters.AddWithValue("@BuildingName", input);
 
                 var id = new SqlParameter("@BuildingID", SqlDbType.Int);
                 id.Direction = ParameterDirection.Output;

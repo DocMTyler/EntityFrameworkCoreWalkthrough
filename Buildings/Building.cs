@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework
 {
-    public class Buildings
+    public class Building
     {
         public int BuildingID { get; set; }
         public string BuildingName { get; set; }

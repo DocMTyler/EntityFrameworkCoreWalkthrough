@@ -13,6 +13,8 @@ namespace EntityFramework
         public string Description { get; set; }
 
         public int BuildingID { get; set; }
-        public Buildings Building { get; set; }
+        public Building Building { get; set; }
+
+        public List<Section> Sections { get; set; }
     }
 }
