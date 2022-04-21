@@ -10,7 +10,8 @@ namespace EntityFramework
     {
         public int PeriodID { get; set; }
         public string PeriodName { get; set; }
-        public TimeSpan PeriodTimeSpan { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         List<Section> Sections { get; set; }
     }
