@@ -25,6 +25,10 @@ namespace EntityFramework
             {
                 //---------------------------------------------------------------
                 //Buildings queries
+                /*var teacher = db.Teacher.Find(3);
+                Console.WriteLine($"Teacher ID: {teacher.TeacherID} Teacher Name: {teacher.FirstName} {teacher.LastName}");*/
+
+
                 /*var building = db.Building.Find(1);
                 var building2 = db.Building.Single(b => b.BuildingID == 2);
 
@@ -94,6 +98,12 @@ namespace EntityFramework
                 db.SaveChanges();
                 Console.WriteLine($"New building has id {building.BuildingID} ");*/
 
+                //Insert exercise
+                /*var teacher = new Teacher() { FirstName = "Tyler", LastName = "Hougland" };
+                db.Teacher.Add(teacher);
+                db.SaveChanges();
+                Console.WriteLine($"New teacher has id {teacher.TeacherID} ");*/
+
                 //---------------------------------------------------------------------
                 //Update DB
                 //var room = db.Room.Find(1);
@@ -102,6 +112,13 @@ namespace EntityFramework
                 /*outScopeRoom.Description = "Getting!!";
                 db.Room.Update(outScopeRoom);
                 db.SaveChanges();*/
+
+                //Update Exercise
+                /*var teacher = db.Teacher.Find(11);
+                teacher.FirstName = "Matthew";
+                db.Teacher.Update(teacher);
+                db.SaveChanges();
+                Console.WriteLine($"Teacher {teacher.TeacherID}'s name has been changed to {teacher.FirstName} {teacher.LastName} ");*/
 
                 //--------------------------------------------------------------------
                 //Delete from DB
@@ -112,6 +129,11 @@ namespace EntityFramework
                 db.Building.Remove(building);
                 db.SaveChanges();*/
                 /*Delete(6);
+                db.SaveChanges();*/
+
+                //Delete exercise
+                /*var teacher = db.Teacher.Single(t => t.TeacherID == 11);
+                db.Teacher.Remove(teacher);
                 db.SaveChanges();*/
 
                 //---------------------------------------------------------------------
@@ -131,10 +153,10 @@ namespace EntityFramework
                     Console.WriteLine($"{g.Building} - {g.Count}");
                 }*/
             }
-            Console.WriteLine("Enter the building name that you want to put in the database");
+            /*Console.WriteLine("Enter the building name that you want to put in the database");
             string input = Console.ReadLine();
             InsertStoredProcedureExample(input);
-            GetAllStoredProcedureExample();
+            GetAllStoredProcedureExample();*/
             //FromEFStoredProcedureExample();
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
@@ -157,9 +179,9 @@ namespace EntityFramework
         {
             using (var db = ApplicationDbContext.GetDBContext())
             {
-                var building = new Buildings() { BuildingID = buildingId };
-                db.Buildings.Attach(building);
-                db.Buildings.Remove(building);
+                var building = new Building() { BuildingID = buildingId };
+                db.Building.Attach(building);
+                db.Building.Remove(building);
                 db.SaveChanges();
             }
         }

@@ -28,9 +28,6 @@ namespace EntityFramework
         public DbSet<GradeItem> GradeItem { get; set; }
         public DbSet<GradeType> GradeType { get; set; }
 
-
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.LogTo(message => Debug.WriteLine(message), LogLevel.Information);
