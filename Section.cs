@@ -14,10 +14,14 @@ namespace EntityFramework
         public Course Course { get; set; }
 
         public int TeacherID { get; set; }
+        public Teacher Teacher { get; set; }
 
 
         public int SemesterID { get; set; } 
+        public Semester Semester { get; set; }
+
         public int PeriodID { get; set; }
+        public Period Period { get; set; }
         
         public int RoomID { get; set; }
         public Room Room { get; set; }
